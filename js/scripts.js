@@ -55,6 +55,32 @@ function boldPassage(word, text) {
   return htmlString + "</p>";
 }
 
+function omitOffensive(text){
+let htmlStringOffensive = "<p>";
+let offensiveArray=["zoinks", "muppeteer", "biffaroni","loopdaloop"];
+let textArray = text.split(" ");
+textArray.forEach(function(element,index){
+  if(offensiveArray.includes(element.toLowerCase()))
+  {
+    htmlStringOffensive= htmlStringOffensive.concat(" ");
+  }
+  else{
+  htmlStringOffensive = htmlStringOffensive.concat(element);
+  } 
+  if (index !== (textArray.length - 1)) {
+    htmlStringOffensive = htmlStringOffensive.concat(" ");
+  }
+});
+return htmlStringOffensive + "</p>";
+
+}
+
+function threeMostUsedWord(text){
+let textArray = text.split("");
+}
+
+
+
 // UI Logic
 $(document).ready(function(){
   $("form#word-counter").submit(function(event){
@@ -63,8 +89,12 @@ $(document).ready(function(){
     const word = $("#word").val();
     const wordCount = wordCounter(passage);
     const occurrencesOfWord = numberOfOccurrencesInText(word, passage);
+    const ommitOffensiveWord =omitOffensive(passage);
+    const usedWord=threeMostUsedWord(passage);
+   
     $("#total-count").html(wordCount);
     $("#selected-count").html(occurrencesOfWord);
     $("#bolded-passage").html(boldPassage(word, passage));
+    $("#offensive-passage").html(ommitOffensiveWord)
   });
 });

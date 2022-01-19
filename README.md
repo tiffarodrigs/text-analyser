@@ -98,3 +98,22 @@ const word = "hello";
 const text = "hello there";
 boldPassage(word, text);
 Expected Output: "<p><b>hello</b> there</p>"
+
+Describe: offensiveWords()
+
+zoinks, muppeteer, biffaroni, and loopdaloop
+Test: "display the text omitting the offensive words like zoinks, muppeteer, biffaroni, and loopdaloop"
+Code:
+const word = "biffaroni";
+const text = "hello biffaroni";
+offensiveWords(text)
+Expected Output: "hello"
+
+
+Describe: threeMostUsedWord()
+Test: "display one most used word"
+Code:
+
+const text = "hello hi guys hi girls hi kids";
+threeMostUsedWord(text)
+Expected Output: hi : 3
