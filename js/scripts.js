@@ -1,13 +1,19 @@
 //Utility Logic
-function noInputtedWord(word,text){
-  return ((text.trim().length === 0) || (word.trim().length === 0)) 
-    
+
+function noInputtedWord(){
+  for(let i=0 ; i < arguments.length ; i++)
+  {
+    if(arguments[i].trim().length === 0){
+    return true;
+    }
+  }
+  return false;
 }
 
 // Business Logic
 
 function wordCounter(text) {
-  if (text.trim().length === 0) {
+ if(noInputtedWord(text)) {
     return 0;
   }
   let wordCount = 0;
@@ -105,17 +111,32 @@ function threeMostUsedWord(text){
     }
   });
 
-  wordCounter.push([matchedWord,count]);
-  wordCounter.sort( function(a,b) { return b[1] - a[1]});
+   wordCounter.push([matchedWord,count]);
+    wordCounter.sort( function(a,b) { return b[1] - a[1]});
 
-console.log({wordCounter})
+    console.log({wordCounter})
    finalArray = wordCounter.splice(0, 3);
    console.log("Most common words:")
    finalArray.forEach(function(element){
 
     console.log(element[0]+": "+ element[1])
    });
+}
+
+function firstInstanceOfWord(word,text)
+{
+  const textArray=text.split(" ");
+  for(var i=0; i<textArray.length ; i++){
+    if(textArray[i]=== word){
+    return i
+    }
   }
+  return -1
+  //split and store in array
+  //iterate the Array using for
+  //inside for if word and element matches return
+
+}
 
 
 
