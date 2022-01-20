@@ -80,7 +80,7 @@ return htmlStringOffensive + "</p>";
 
 
 function threeMostUsedWord(text){
-  let textArray = text.split(" ");
+  let textArray = text.toLowerCase().split(" ");
   let count=0;
   let matchedWord=null;
   let resultArray=[];
@@ -90,10 +90,12 @@ function threeMostUsedWord(text){
   {
     if(element!=matchedWord)
     {
-      if(count>0)
-      {
-        count++;
-      }
+    //  if(count>0) {
+    //    count++;
+    //  }
+    if(matchedWord != null){
+    wordCounter.push([matchedWord,count]);
+    }
       matchedWord=element;
       count=1;
     }
@@ -101,15 +103,21 @@ function threeMostUsedWord(text){
     {
       count++;
     }
-    wordCounter.push([matchedWord,count]);
-    wordCounter.sort( function(a,b) { return b[1] - a[1]});
   });
 
+  wordCounter.push([matchedWord,count]);
+  wordCounter.sort( function(a,b) { return b[1] - a[1]});
+
+console.log({wordCounter})
    finalArray = wordCounter.splice(0, 3);
+   console.log("Most common words:")
    finalArray.forEach(function(element){
-     console.log(element);
+
+    console.log(element[0]+": "+ element[1])
    });
   }
+
+
 
 
 
